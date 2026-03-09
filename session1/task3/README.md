@@ -56,7 +56,7 @@
 4. Check the size of the executable by entering this command in the terminal
    window:
 
-       wc -c task3
+       wc -c task3 > 16256 task3
 
    Make a note of the number you see. Then edit `Makefile` so that the
    `CFLAGS` variable includes a definition of the `NDEBUG` preprocessor
@@ -65,7 +65,7 @@
        CFLAGS = -DNDEBUG -Wall -Wextra -Werror
 
    Recompile the application and check its size again. You should see that it
-   is slightly smaller, because the assertion code has been removed.
+   is slightly smaller, because the assertion code has been removed. : 16160 task3
 
 5. Run the program, without command line arguments. You should no longer
    see a failed assertion.

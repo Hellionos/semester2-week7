@@ -10,6 +10,8 @@
 
        ./a.out
 
+      :-1539802837
+
    **Then remove `a.out`**.
 
 3. Recompile `undefined.c`, this time using the `-Wall` option:
@@ -18,11 +20,31 @@
 
    What do you see in the terminal?
 
-4. Run the program to verify that behaviour is unchanged,
+   undefined.c: In function ‘main’:
+undefined.c:9:7: warning: ‘i’ is used uninitialized [-Wuninitialized]
+    9 |     j = i + 3;
+      |     ~~^~~~~~~
+undefined.c:7:9: note: ‘i’ was declared here
+    7 |     int i, j;
+      |         ^
+
+4. Run the program to verify that behaviour is unchanged, :-1889491157
    **then remove `a.out` once again**.
 
 5. Recompile `undefined.c` using the `-Wall` and `-Werror` options. Does the
    compiler output change in any way? Is an executable generated?
+   -Werror gave no error
+   :1711717691
+
+   when Werror and Wall ar used together
+   undefined.c: In function ‘main’:
+undefined.c:9:7: error: ‘i’ is used uninitialized [-Werror=uninitialized]
+    9 |     j = i + 3;
+      |     ~~^~~~~~~
+undefined.c:7:9: note: ‘i’ was declared here
+    7 |     int i, j;
+      |         ^
+cc1: all warnings being treated as errors
 
 ## `double_free.c`
 
@@ -30,8 +52,23 @@
    compiler options. Do you see any messages from the compiler?
    Does compilation succeed?
 
+    gcc -Wall -Wextra -Werror double_free.c
+double_free.c: In function ‘main’:
+double_free.c:16:5: error: pointer ‘a’ used after ‘free’ [-Werror=use-after-free]
+   16 |     free(a);
+      |     ^~~~~~~
+double_free.c:14:5: note: call to ‘free’ here
+   14 |     free(a);
+      |     ^~~~~~~
+cc1: all warnings being treated as errors
+
 2. Run the compiled program. What happens? Do you get any clues about what
    has gone wrong?
+
+   free(): double free detected in tcache 2
+   Aborted (core dumped)
+
+   The free() function seems to try to clear the allocated memory of the array(?) two seperate times
 
 3. Repeat Step 1 for `crash.c` from Task 1. What can you conclude from these
    experiments about the compiler options that you have used?

@@ -180,4 +180,4 @@ line, but it has some problems.
    identify (and fix) another bug...
 
    (Hint: what is the limitation that arises from the use of a `long int`
-   variable?)
+   variable?) after 20! the number is so big it overflows

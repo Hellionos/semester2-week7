@@ -72,3 +72,37 @@ cc1: all warnings being treated as errors
 
 3. Repeat Step 1 for `crash.c` from Task 1. What can you conclude from these
    experiments about the compiler options that you have used?
+   
+-Wall
+
+Enables a broad set of common and important warnings.
+Despite the name, it does not enable all warnings—it’s a sensible baseline.
+Typical things it catches:
+
+Unused variables or functions
+Suspicious if conditions
+Possible use of uninitialized variables (in some cases)
+Implicit function declarations (C99+ treats this as an error by default)
+Missing return statements in non-void functions
+
+
+
+-Wextra
+
+Turns on additional warnings that are more opinionated or noisy than -Wall.
+Examples:
+
+Unused parameters
+Signed/unsigned comparison peculiarities in some cases
+Extra checks around conditionals and conversions that aren’t severe enough for -Wall but still helpful
+
+
+
+
+In short: -Wall = “common issues”, -Wextra = “more thorough scrutiny”.
+
+-Werror
+
+Treats all warnings as errors (compilation fails if there’s any warning).
+Great for CI and enforcing code hygiene.
+You can narrow it with -Werror=warning-name or loosen it with -Wno-error=warning-name.

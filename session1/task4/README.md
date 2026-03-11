@@ -130,7 +130,7 @@ where possible.
 
    Read the docstring of the `grade()` function, then compare each line
    of program output with the contents of `marks.csv`. Can you see another
-   problem here?
+   problem here? - 70 counts as a pass and a distinction although pass is applied first when it should be just a distinction
 
 ## Third & Fourth Bugs
 

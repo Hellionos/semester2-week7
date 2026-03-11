@@ -160,3 +160,4 @@ We've provided these in `test_grade.py`.
    Hint: you can use Python's `isinstance()` function here. For example,
    `isinstance(x, int)` will return `True` if `x` references an integer, or
    `False` if it doesn't.
+--I didn't actually get an error raised from 101 but I think that's fine.

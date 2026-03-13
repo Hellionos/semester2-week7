@@ -26,6 +26,13 @@ message and terminate.
 2. Run the program to check whether it meets all of the expectations outlined
    above. Make a note of your findings.
 
+   -No command line argument works as intended
+   -The name of a not accessible file doesn't work as intended
+   -It doesn't ignore negative numbers **This is changed to work now**
+   -non-numeric data isn't ignored
+   -An empty file doesn't send an error message
+   -"_0.6" leads to weirdness but I don't know why
+
 ## Function Breakpoints
 
 1. Load the program into GDB, then establish breakpoints just inside the
@@ -66,11 +73,11 @@ non-numeric input correctly.
 
    Execution should pause just inside `read_data()`.
 
-2. Next, establish a **conditional breakpoint** on line 24, which will trigger
+2. Next, establish a **conditional breakpoint** on line 25, which will trigger
    only if the variable `value` is negative:
 
        display value
-       b 24 if value < 0.0
+       b 25 if value < 0.0
 
    Notice the use of `display` here, to ensure the variable is displayed
    automatically when the program next pauses.
